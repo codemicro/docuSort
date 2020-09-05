@@ -1,25 +1,31 @@
-// Main page template. Implements BasePage methods.
+// Subject page template. Implements BasePage methods.
 
 {% code
-type MainPage struct {
+type SubjectPage struct {
 	Subjects []string
+	Subject string
+	Files string
 }
 %}
 
 
-{% func (p *MainPage) Title() %}
-	Main page
+{% func (p *SubjectPage) Subpage() %}
+	../
 {% endfunc %}
 
+{% func (p *SubjectPage) Title() %}
+	{%s p.Subject %}
+{% endfunc %}
 
-{% func (p *MainPage) Body() %}
-	<h1>Main page</h1>
-	<div>
-		Click links below:
-		<ul>
-			{% for _, subj := range p.Subjects %}
-				<li><a href="{%s subj %}/">{%s subj %}</a></li>
-			{% endfor %}
-		</ul>
-	</div>
+{% func (p *SubjectPage) Sidebar() %}
+	{%= Sidebar(p.Subjects, 99, "../") %}
+{% endfunc %}
+
+{% func (p *SubjectPage) Body() %}
+	<script>
+		const items = {%s= p.Files %}
+	</script>
+	<h1>{%s p.Subject %}</h1>
+	<noscript>Enable JavaScript for this page to work</noscript>
+	<div id="buildArea"></div>
 {% endfunc %}

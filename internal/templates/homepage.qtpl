@@ -1,0 +1,27 @@
+// Home page template. Implements BasePage methods.
+
+{% code
+type HomePage struct {
+	Subjects []string
+}
+%}
+
+
+{% func (p *HomePage) Subpage() %}
+	
+{% endfunc %}
+
+{% func (p *HomePage) Title() %}
+	Home
+{% endfunc %}
+
+{% func (p *HomePage) Sidebar() %}
+	{%= Sidebar(p.Subjects, 99, "") %}
+{% endfunc %}
+
+{% func (p *HomePage) Body() %}
+	<div>
+        <br>
+		<i>Click on one of the links in the sidebar</i>
+	</div>
+{% endfunc %}

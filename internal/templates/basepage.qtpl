@@ -4,22 +4,94 @@ This is a base page template. All the other template pages implement this interf
 Page {
 	Title()
 	Body()
+	Sidebar()
+	Subpage()
 }
 %}
 
 
 Page prints a page implementing Page interface.
 {% func PageTemplate(p Page) %}
-<html>
-	<head>
-		<title>{%= p.Title() %}</title>
-	</head>
-	<body>
-		<div>
-			<a href="/">return to main page</a>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Notes: {%= p.Title() %}</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="{%s p.Subpage() %}web/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="{%s p.Subpage() %}web/css/simple-sidebar.css" rel="stylesheet">
+	<link href="{%s p.Subpage() %}web/css/modal.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<div id="displayModal" class="modal">
+		<div class="modal-content">
+			<span id="closeButton"><img src="{%s p.Subpage() %}web/img/exitfullscreen.svg" alt="exit icon"></span>
+			<iframe id="modalIframe" src=""></iframe>
 		</div>
-		{%= p.Body() %}
-	</body>
+	</div>
+
+	<div class="d-flex" id="wrapper">
+
+		{%= p.Sidebar() %}
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+
+			<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+				<button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+						<li class="nav-item active">
+							<a class="nav-link" href="{%s p.Subpage() %}index.html">Home</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			<div class="container-fluid">
+				{%= p.Body() %}
+			</div>
+		</div>
+		<!-- /#page-content-wrapper -->
+
+	</div>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="{%s p.Subpage() %}web/vendor/jquery/jquery.min.js"></script>
+	<script src="{%s p.Subpage() %}web/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- custom JavaScript -->
+	<script src="{%s p.Subpage() %}web/js/modal.js"></script>
+	<script src="{%s p.Subpage() %}web/js/mainpage.js"></script>
+
+	<!-- Menu Toggle Script -->
+	<script>
+	$("#menu-toggle").click(function(e) {
+		e.preventDefault();
+		$("#wrapper").toggleClass("toggled");
+	});
+	</script>
+
+</body>
+
 </html>
 {% endfunc %}
 
@@ -29,3 +101,20 @@ overriding only certain Page methods
 {% code type BasePage struct {} %}
 {% func (p *BasePage) Title() %}This is a base title{% endfunc %}
 {% func (p *BasePage) Body() %}This is a base body{% endfunc %}
+
+{% func Sidebar(items []string, current int, subpage string) %}
+	<!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+		<div class="sidebar-heading">Notes </div>
+		<div class="list-group list-group-flush">
+			{% for index, item := range items %}
+				{% if index == current %}
+					<a href="#" class="list-group-item list-group-item-action bg-light">{%s item %}</a>
+				{% else %}
+					<a href="{%s subpage %}{%s item %}/index.html" class="list-group-item list-group-item-action bg-light">{%s item %}</a>
+				{% endif %}
+			{% endfor %}
+		</div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+{% endfunc %}

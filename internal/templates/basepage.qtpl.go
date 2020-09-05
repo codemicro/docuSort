@@ -35,131 +35,341 @@ type Page interface {
 //line ../../internal/templates/basepage.qtpl:4
 	WriteBody(qq422016 qtio422016.Writer)
 //line ../../internal/templates/basepage.qtpl:4
+	Sidebar() string
+//line ../../internal/templates/basepage.qtpl:4
+	StreamSidebar(qw422016 *qt422016.Writer)
+//line ../../internal/templates/basepage.qtpl:4
+	WriteSidebar(qq422016 qtio422016.Writer)
+//line ../../internal/templates/basepage.qtpl:4
+	Subpage() string
+//line ../../internal/templates/basepage.qtpl:4
+	StreamSubpage(qw422016 *qt422016.Writer)
+//line ../../internal/templates/basepage.qtpl:4
+	WriteSubpage(qq422016 qtio422016.Writer)
+//line ../../internal/templates/basepage.qtpl:4
 }
 
 // Page prints a page implementing Page interface.
 
-//line ../../internal/templates/basepage.qtpl:12
+//line ../../internal/templates/basepage.qtpl:14
 func StreamPageTemplate(qw422016 *qt422016.Writer, p Page) {
-//line ../../internal/templates/basepage.qtpl:12
+//line ../../internal/templates/basepage.qtpl:14
 	qw422016.N().S(`
-<html>
-	<head>
-		<title>`)
-//line ../../internal/templates/basepage.qtpl:15
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Notes: `)
+//line ../../internal/templates/basepage.qtpl:26
 	p.StreamTitle(qw422016)
-//line ../../internal/templates/basepage.qtpl:15
+//line ../../internal/templates/basepage.qtpl:26
 	qw422016.N().S(`</title>
-	</head>
-	<body>
-		<div>
-			<a href="/">return to main page</a>
-		</div>
+
+	<!-- Bootstrap core CSS -->
+	<link href="`)
+//line ../../internal/templates/basepage.qtpl:29
+	qw422016.E().S(p.Subpage())
+//line ../../internal/templates/basepage.qtpl:29
+	qw422016.N().S(`web/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="`)
+//line ../../internal/templates/basepage.qtpl:32
+	qw422016.E().S(p.Subpage())
+//line ../../internal/templates/basepage.qtpl:32
+	qw422016.N().S(`web/css/simple-sidebar.css" rel="stylesheet">
+	<link href="`)
+//line ../../internal/templates/basepage.qtpl:33
+	qw422016.E().S(p.Subpage())
+//line ../../internal/templates/basepage.qtpl:33
+	qw422016.N().S(`web/css/modal.css" rel="stylesheet">
+	<link href="`)
+//line ../../internal/templates/basepage.qtpl:34
+	qw422016.E().S(p.Subpage())
+//line ../../internal/templates/basepage.qtpl:34
+	qw422016.N().S(`web/css/custom.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<div class="d-flex" id="wrapper">
+
 		`)
-//line ../../internal/templates/basepage.qtpl:21
-	p.StreamBody(qw422016)
-//line ../../internal/templates/basepage.qtpl:21
+//line ../../internal/templates/basepage.qtpl:42
+	p.StreamSidebar(qw422016)
+//line ../../internal/templates/basepage.qtpl:42
 	qw422016.N().S(`
-	</body>
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+
+			<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+				<button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+						<li class="nav-item active">
+							<a class="nav-link" href="`)
+//line ../../internal/templates/basepage.qtpl:57
+	qw422016.E().S(p.Subpage())
+//line ../../internal/templates/basepage.qtpl:57
+	qw422016.N().S(`index.html">Home</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			<div class="container-fluid">
+				
+				<div id="displayModal" class="modal">
+					<div class="modal-content">
+						<span id="closeButton"><img src="`)
+//line ../../internal/templates/basepage.qtpl:67
+	qw422016.E().S(p.Subpage())
+//line ../../internal/templates/basepage.qtpl:67
+	qw422016.N().S(`web/img/exitfullscreen.svg" alt="exit icon"></span>
+						<iframe id="modalIframe" src=""></iframe>
+					</div>
+				</div>
+
+				`)
+//line ../../internal/templates/basepage.qtpl:72
+	p.StreamBody(qw422016)
+//line ../../internal/templates/basepage.qtpl:72
+	qw422016.N().S(`
+			</div>
+		</div>
+		<!-- /#page-content-wrapper -->
+
+	</div>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="`)
+//line ../../internal/templates/basepage.qtpl:80
+	qw422016.E().S(p.Subpage())
+//line ../../internal/templates/basepage.qtpl:80
+	qw422016.N().S(`web/vendor/jquery/jquery.min.js"></script>
+	<script src="`)
+//line ../../internal/templates/basepage.qtpl:81
+	qw422016.E().S(p.Subpage())
+//line ../../internal/templates/basepage.qtpl:81
+	qw422016.N().S(`web/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- custom JavaScript -->
+	<script src="`)
+//line ../../internal/templates/basepage.qtpl:84
+	qw422016.E().S(p.Subpage())
+//line ../../internal/templates/basepage.qtpl:84
+	qw422016.N().S(`web/js/modal.js"></script>
+	<script src="`)
+//line ../../internal/templates/basepage.qtpl:85
+	qw422016.E().S(p.Subpage())
+//line ../../internal/templates/basepage.qtpl:85
+	qw422016.N().S(`web/js/mainpage.js"></script>
+
+	<!-- Menu Toggle Script -->
+	<script>
+	$("#menu-toggle").click(function(e) {
+		e.preventDefault();
+		$("#wrapper").toggleClass("toggled");
+	});
+	</script>
+
+</body>
+
 </html>
 `)
-//line ../../internal/templates/basepage.qtpl:24
+//line ../../internal/templates/basepage.qtpl:98
 }
 
-//line ../../internal/templates/basepage.qtpl:24
+//line ../../internal/templates/basepage.qtpl:98
 func WritePageTemplate(qq422016 qtio422016.Writer, p Page) {
-//line ../../internal/templates/basepage.qtpl:24
+//line ../../internal/templates/basepage.qtpl:98
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line ../../internal/templates/basepage.qtpl:24
+//line ../../internal/templates/basepage.qtpl:98
 	StreamPageTemplate(qw422016, p)
-//line ../../internal/templates/basepage.qtpl:24
+//line ../../internal/templates/basepage.qtpl:98
 	qt422016.ReleaseWriter(qw422016)
-//line ../../internal/templates/basepage.qtpl:24
+//line ../../internal/templates/basepage.qtpl:98
 }
 
-//line ../../internal/templates/basepage.qtpl:24
+//line ../../internal/templates/basepage.qtpl:98
 func PageTemplate(p Page) string {
-//line ../../internal/templates/basepage.qtpl:24
+//line ../../internal/templates/basepage.qtpl:98
 	qb422016 := qt422016.AcquireByteBuffer()
-//line ../../internal/templates/basepage.qtpl:24
+//line ../../internal/templates/basepage.qtpl:98
 	WritePageTemplate(qb422016, p)
-//line ../../internal/templates/basepage.qtpl:24
+//line ../../internal/templates/basepage.qtpl:98
 	qs422016 := string(qb422016.B)
-//line ../../internal/templates/basepage.qtpl:24
+//line ../../internal/templates/basepage.qtpl:98
 	qt422016.ReleaseByteBuffer(qb422016)
-//line ../../internal/templates/basepage.qtpl:24
+//line ../../internal/templates/basepage.qtpl:98
 	return qs422016
-//line ../../internal/templates/basepage.qtpl:24
+//line ../../internal/templates/basepage.qtpl:98
 }
 
 // Base page implementation. Other pages may inherit from it if they need
 // overriding only certain Page methods
 
-//line ../../internal/templates/basepage.qtpl:29
+//line ../../internal/templates/basepage.qtpl:103
 type BasePage struct{}
 
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 func (p *BasePage) StreamTitle(qw422016 *qt422016.Writer) {
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 	qw422016.N().S(`This is a base title`)
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 }
 
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 func (p *BasePage) WriteTitle(qq422016 qtio422016.Writer) {
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 	p.StreamTitle(qw422016)
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 	qt422016.ReleaseWriter(qw422016)
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 }
 
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 func (p *BasePage) Title() string {
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 	qb422016 := qt422016.AcquireByteBuffer()
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 	p.WriteTitle(qb422016)
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 	qs422016 := string(qb422016.B)
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 	qt422016.ReleaseByteBuffer(qb422016)
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 	return qs422016
-//line ../../internal/templates/basepage.qtpl:30
+//line ../../internal/templates/basepage.qtpl:104
 }
 
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
 func (p *BasePage) StreamBody(qw422016 *qt422016.Writer) {
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
 	qw422016.N().S(`This is a base body`)
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
 }
 
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
 func (p *BasePage) WriteBody(qq422016 qtio422016.Writer) {
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
 	p.StreamBody(qw422016)
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
 	qt422016.ReleaseWriter(qw422016)
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
 }
 
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
 func (p *BasePage) Body() string {
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
 	qb422016 := qt422016.AcquireByteBuffer()
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
 	p.WriteBody(qb422016)
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
 	qs422016 := string(qb422016.B)
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
 	qt422016.ReleaseByteBuffer(qb422016)
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
 	return qs422016
-//line ../../internal/templates/basepage.qtpl:31
+//line ../../internal/templates/basepage.qtpl:105
+}
+
+//line ../../internal/templates/basepage.qtpl:107
+func StreamSidebar(qw422016 *qt422016.Writer, items []string, current int, subpage string) {
+//line ../../internal/templates/basepage.qtpl:107
+	qw422016.N().S(`
+	<!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+		<div class="sidebar-heading">Notes </div>
+		<div class="list-group list-group-flush">
+			`)
+//line ../../internal/templates/basepage.qtpl:112
+	for index, item := range items {
+//line ../../internal/templates/basepage.qtpl:112
+		qw422016.N().S(`
+				`)
+//line ../../internal/templates/basepage.qtpl:113
+		if index == current {
+//line ../../internal/templates/basepage.qtpl:113
+			qw422016.N().S(`
+					<a href="#" class="list-group-item list-group-item-action bg-light">`)
+//line ../../internal/templates/basepage.qtpl:114
+			qw422016.E().S(item)
+//line ../../internal/templates/basepage.qtpl:114
+			qw422016.N().S(`</a>
+				`)
+//line ../../internal/templates/basepage.qtpl:115
+		} else {
+//line ../../internal/templates/basepage.qtpl:115
+			qw422016.N().S(`
+					<a href="`)
+//line ../../internal/templates/basepage.qtpl:116
+			qw422016.E().S(subpage)
+//line ../../internal/templates/basepage.qtpl:116
+			qw422016.E().S(item)
+//line ../../internal/templates/basepage.qtpl:116
+			qw422016.N().S(`/index.html" class="list-group-item list-group-item-action bg-light">`)
+//line ../../internal/templates/basepage.qtpl:116
+			qw422016.E().S(item)
+//line ../../internal/templates/basepage.qtpl:116
+			qw422016.N().S(`</a>
+				`)
+//line ../../internal/templates/basepage.qtpl:117
+		}
+//line ../../internal/templates/basepage.qtpl:117
+		qw422016.N().S(`
+			`)
+//line ../../internal/templates/basepage.qtpl:118
+	}
+//line ../../internal/templates/basepage.qtpl:118
+	qw422016.N().S(`
+		</div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+`)
+//line ../../internal/templates/basepage.qtpl:122
+}
+
+//line ../../internal/templates/basepage.qtpl:122
+func WriteSidebar(qq422016 qtio422016.Writer, items []string, current int, subpage string) {
+//line ../../internal/templates/basepage.qtpl:122
+	qw422016 := qt422016.AcquireWriter(qq422016)
+//line ../../internal/templates/basepage.qtpl:122
+	StreamSidebar(qw422016, items, current, subpage)
+//line ../../internal/templates/basepage.qtpl:122
+	qt422016.ReleaseWriter(qw422016)
+//line ../../internal/templates/basepage.qtpl:122
+}
+
+//line ../../internal/templates/basepage.qtpl:122
+func Sidebar(items []string, current int, subpage string) string {
+//line ../../internal/templates/basepage.qtpl:122
+	qb422016 := qt422016.AcquireByteBuffer()
+//line ../../internal/templates/basepage.qtpl:122
+	WriteSidebar(qb422016, items, current, subpage)
+//line ../../internal/templates/basepage.qtpl:122
+	qs422016 := string(qb422016.B)
+//line ../../internal/templates/basepage.qtpl:122
+	qt422016.ReleaseByteBuffer(qb422016)
+//line ../../internal/templates/basepage.qtpl:122
+	return qs422016
+//line ../../internal/templates/basepage.qtpl:122
 }
