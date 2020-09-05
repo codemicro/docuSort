@@ -8,3 +8,7 @@ span.linkStyle:hover {
     text-decoration:none;
     text-shadow: 1px 1px 1px #555;
 }
+
+.container-fluid {
+    padding-top: 10px;
+}
