@@ -24,7 +24,7 @@ const (
 )
 
 func main() {
-	fmt.Println("docuSort v" + version)
+	fmt.Println("docuSort save tool v" + version)
 	fmt.Println()
 
 	args := os.Args
