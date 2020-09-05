@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"regexp"
 	"strconv"
 	"strings"
 	"time"
@@ -20,7 +19,7 @@ var (
 )
 
 const (
-	version = "1.0.0"
+	version = "1.0.1"
 )
 
 func main() {
@@ -79,26 +78,14 @@ func main() {
 	// Get date
 	var dateString string
 
-	for {
+	fmt.Print("Date (blank for today, else ddmmyy): ")
+	scanner.Scan()
+	text := scanner.Text()
 
-		fmt.Print("Date (blank for today, else ddmmyy): ")
-		scanner.Scan()
-		text := scanner.Text()
-
-		if text == "" {
-			dateString = time.Now().Format("020106") // ddmmyy format
-			break
-		}
-
-		re := regexp.MustCompile(`^\d{8}$`)
-		if len(re.FindAllString(text, -1)) == 0 {
-			fmt.Println("Incorrect format")
-			continue
-		}
-
+	if text == "" {
+		dateString = time.Now().Format("020106") // ddmmyy format
+	} else {
 		dateString = text
-		break
-
 	}
 
 	fmt.Println("Topics (enter blank value to finish):")
