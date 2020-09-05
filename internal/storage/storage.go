@@ -10,6 +10,15 @@ var (
 	fileName = "documents.json"
 )
 
+func isStringInSlice(a string, list []string) bool {
+	for _, b := range list {
+		if strings.ToLower(b) == strings.ToLower(a) {
+			return true
+		}
+	}
+	return false
+}
+
 type Document struct {
 	Subject  string
 	Filename string
@@ -48,4 +57,24 @@ func CountWhereSubjectIs(subject string, documents []Document) int32 {
 		}
 	}
 	return count
+}
+
+func FilterWhereSubjectIs(subject string, documents []Document) []Document {
+	var newSlice []Document
+	for _, v := range documents {
+		if strings.ToLower(subject) == strings.ToLower(v.Subject) {
+			newSlice = append(newSlice, v)
+		}
+	}
+	return newSlice
+}
+
+func GetSubjects(documents []Document) []string {
+	var subjects []string
+	for _, v := range documents {
+		if !isStringInSlice(v.Subject, subjects) {
+			subjects = append(subjects, v.Subject)
+		}
+	}
+	return subjects
 }
