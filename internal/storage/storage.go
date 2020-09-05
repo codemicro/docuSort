@@ -2,7 +2,6 @@ package storage
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"strings"
 )
@@ -22,8 +21,6 @@ func GetFiles() ([]Document, error) {
 	if err != nil {
 		return []Document{}, nil // Assume it means file does not exist
 	}
-
-	fmt.Println(string(content))
 
 	var returnValue []Document
 	err = json.Unmarshal(content, &returnValue)
