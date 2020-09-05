@@ -20,7 +20,7 @@ var (
 )
 
 const (
-	version = "0.0.0a"
+	version = "1.0.0"
 )
 
 func main() {
@@ -163,6 +163,13 @@ func main() {
 	}
 
 	_, err = helpers.CopyFile(document, newFileLocation)
+
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	err = os.Remove(document)
 
 	if err != nil {
 		fmt.Println(err.Error())
