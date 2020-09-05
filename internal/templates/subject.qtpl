@@ -1,0 +1,25 @@
+// Main page template. Implements BasePage methods.
+
+{% code
+type MainPage struct {
+	Subjects []string
+}
+%}
+
+
+{% func (p *MainPage) Title() %}
+	Main page
+{% endfunc %}
+
+
+{% func (p *MainPage) Body() %}
+	<h1>Main page</h1>
+	<div>
+		Click links below:
+		<ul>
+			{% for _, subj := range p.Subjects %}
+				<li><a href="{%s subj %}/">{%s subj %}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endfunc %}
