@@ -90,22 +90,28 @@ func StreamPageTemplate(qw422016 *qt422016.Writer, p Page) {
 	qw422016.E().S(p.Subpage())
 //line ../../internal/templates/basepage.qtpl:33
 	qw422016.N().S(`web/css/modal.css" rel="stylesheet">
-	<link href="`)
-//line ../../internal/templates/basepage.qtpl:34
-	qw422016.E().S(p.Subpage())
-//line ../../internal/templates/basepage.qtpl:34
-	qw422016.N().S(`web/css/custom.css" rel="stylesheet">
 
 </head>
 
 <body>
 
+	<div id="displayModal" class="modal">
+		<div class="modal-content">
+			<span id="closeButton"><img src="`)
+//line ../../internal/templates/basepage.qtpl:41
+	qw422016.E().S(p.Subpage())
+//line ../../internal/templates/basepage.qtpl:41
+	qw422016.N().S(`web/img/exitfullscreen.svg" alt="exit icon"></span>
+			<iframe id="modalIframe" src=""></iframe>
+		</div>
+	</div>
+
 	<div class="d-flex" id="wrapper">
 
 		`)
-//line ../../internal/templates/basepage.qtpl:42
+//line ../../internal/templates/basepage.qtpl:48
 	p.StreamSidebar(qw422016)
-//line ../../internal/templates/basepage.qtpl:42
+//line ../../internal/templates/basepage.qtpl:48
 	qw422016.N().S(`
 
 		<!-- Page Content -->
@@ -122,9 +128,9 @@ func StreamPageTemplate(qw422016 *qt422016.Writer, p Page) {
 					<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 						<li class="nav-item active">
 							<a class="nav-link" href="`)
-//line ../../internal/templates/basepage.qtpl:57
+//line ../../internal/templates/basepage.qtpl:63
 	qw422016.E().S(p.Subpage())
-//line ../../internal/templates/basepage.qtpl:57
+//line ../../internal/templates/basepage.qtpl:63
 	qw422016.N().S(`index.html">Home</a>
 						</li>
 					</ul>
@@ -132,22 +138,10 @@ func StreamPageTemplate(qw422016 *qt422016.Writer, p Page) {
 			</nav>
 
 			<div class="container-fluid">
-				
-				<div id="displayModal" class="modal">
-					<div class="modal-content">
-						<span id="closeButton"><img src="`)
-//line ../../internal/templates/basepage.qtpl:67
-	qw422016.E().S(p.Subpage())
-//line ../../internal/templates/basepage.qtpl:67
-	qw422016.N().S(`web/img/exitfullscreen.svg" alt="exit icon"></span>
-						<iframe id="modalIframe" src=""></iframe>
-					</div>
-				</div>
-
 				`)
-//line ../../internal/templates/basepage.qtpl:72
+//line ../../internal/templates/basepage.qtpl:70
 	p.StreamBody(qw422016)
-//line ../../internal/templates/basepage.qtpl:72
+//line ../../internal/templates/basepage.qtpl:70
 	qw422016.N().S(`
 			</div>
 		</div>
@@ -157,26 +151,26 @@ func StreamPageTemplate(qw422016 *qt422016.Writer, p Page) {
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="`)
-//line ../../internal/templates/basepage.qtpl:80
+//line ../../internal/templates/basepage.qtpl:78
 	qw422016.E().S(p.Subpage())
-//line ../../internal/templates/basepage.qtpl:80
+//line ../../internal/templates/basepage.qtpl:78
 	qw422016.N().S(`web/vendor/jquery/jquery.min.js"></script>
 	<script src="`)
-//line ../../internal/templates/basepage.qtpl:81
+//line ../../internal/templates/basepage.qtpl:79
 	qw422016.E().S(p.Subpage())
-//line ../../internal/templates/basepage.qtpl:81
+//line ../../internal/templates/basepage.qtpl:79
 	qw422016.N().S(`web/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- custom JavaScript -->
 	<script src="`)
-//line ../../internal/templates/basepage.qtpl:84
+//line ../../internal/templates/basepage.qtpl:82
 	qw422016.E().S(p.Subpage())
-//line ../../internal/templates/basepage.qtpl:84
+//line ../../internal/templates/basepage.qtpl:82
 	qw422016.N().S(`web/js/modal.js"></script>
 	<script src="`)
-//line ../../internal/templates/basepage.qtpl:85
+//line ../../internal/templates/basepage.qtpl:83
 	qw422016.E().S(p.Subpage())
-//line ../../internal/templates/basepage.qtpl:85
+//line ../../internal/templates/basepage.qtpl:83
 	qw422016.N().S(`web/js/mainpage.js"></script>
 
 	<!-- Menu Toggle Script -->
@@ -191,185 +185,185 @@ func StreamPageTemplate(qw422016 *qt422016.Writer, p Page) {
 
 </html>
 `)
-//line ../../internal/templates/basepage.qtpl:98
+//line ../../internal/templates/basepage.qtpl:96
 }
 
-//line ../../internal/templates/basepage.qtpl:98
+//line ../../internal/templates/basepage.qtpl:96
 func WritePageTemplate(qq422016 qtio422016.Writer, p Page) {
-//line ../../internal/templates/basepage.qtpl:98
+//line ../../internal/templates/basepage.qtpl:96
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line ../../internal/templates/basepage.qtpl:98
+//line ../../internal/templates/basepage.qtpl:96
 	StreamPageTemplate(qw422016, p)
-//line ../../internal/templates/basepage.qtpl:98
+//line ../../internal/templates/basepage.qtpl:96
 	qt422016.ReleaseWriter(qw422016)
-//line ../../internal/templates/basepage.qtpl:98
+//line ../../internal/templates/basepage.qtpl:96
 }
 
-//line ../../internal/templates/basepage.qtpl:98
+//line ../../internal/templates/basepage.qtpl:96
 func PageTemplate(p Page) string {
-//line ../../internal/templates/basepage.qtpl:98
+//line ../../internal/templates/basepage.qtpl:96
 	qb422016 := qt422016.AcquireByteBuffer()
-//line ../../internal/templates/basepage.qtpl:98
+//line ../../internal/templates/basepage.qtpl:96
 	WritePageTemplate(qb422016, p)
-//line ../../internal/templates/basepage.qtpl:98
+//line ../../internal/templates/basepage.qtpl:96
 	qs422016 := string(qb422016.B)
-//line ../../internal/templates/basepage.qtpl:98
+//line ../../internal/templates/basepage.qtpl:96
 	qt422016.ReleaseByteBuffer(qb422016)
-//line ../../internal/templates/basepage.qtpl:98
+//line ../../internal/templates/basepage.qtpl:96
 	return qs422016
-//line ../../internal/templates/basepage.qtpl:98
+//line ../../internal/templates/basepage.qtpl:96
 }
 
 // Base page implementation. Other pages may inherit from it if they need
 // overriding only certain Page methods
 
-//line ../../internal/templates/basepage.qtpl:103
+//line ../../internal/templates/basepage.qtpl:101
 type BasePage struct{}
 
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 func (p *BasePage) StreamTitle(qw422016 *qt422016.Writer) {
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 	qw422016.N().S(`This is a base title`)
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 }
 
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 func (p *BasePage) WriteTitle(qq422016 qtio422016.Writer) {
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 	p.StreamTitle(qw422016)
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 	qt422016.ReleaseWriter(qw422016)
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 }
 
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 func (p *BasePage) Title() string {
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 	qb422016 := qt422016.AcquireByteBuffer()
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 	p.WriteTitle(qb422016)
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 	qs422016 := string(qb422016.B)
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 	qt422016.ReleaseByteBuffer(qb422016)
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 	return qs422016
-//line ../../internal/templates/basepage.qtpl:104
+//line ../../internal/templates/basepage.qtpl:102
 }
 
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 func (p *BasePage) StreamBody(qw422016 *qt422016.Writer) {
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 	qw422016.N().S(`This is a base body`)
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 }
 
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 func (p *BasePage) WriteBody(qq422016 qtio422016.Writer) {
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 	p.StreamBody(qw422016)
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 	qt422016.ReleaseWriter(qw422016)
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 }
 
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 func (p *BasePage) Body() string {
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 	qb422016 := qt422016.AcquireByteBuffer()
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 	p.WriteBody(qb422016)
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 	qs422016 := string(qb422016.B)
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 	qt422016.ReleaseByteBuffer(qb422016)
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 	return qs422016
-//line ../../internal/templates/basepage.qtpl:105
+//line ../../internal/templates/basepage.qtpl:103
 }
 
-//line ../../internal/templates/basepage.qtpl:107
+//line ../../internal/templates/basepage.qtpl:105
 func StreamSidebar(qw422016 *qt422016.Writer, items []string, current int, subpage string) {
-//line ../../internal/templates/basepage.qtpl:107
+//line ../../internal/templates/basepage.qtpl:105
 	qw422016.N().S(`
 	<!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
 		<div class="sidebar-heading">Notes </div>
 		<div class="list-group list-group-flush">
 			`)
-//line ../../internal/templates/basepage.qtpl:112
+//line ../../internal/templates/basepage.qtpl:110
 	for index, item := range items {
-//line ../../internal/templates/basepage.qtpl:112
+//line ../../internal/templates/basepage.qtpl:110
 		qw422016.N().S(`
 				`)
-//line ../../internal/templates/basepage.qtpl:113
+//line ../../internal/templates/basepage.qtpl:111
 		if index == current {
-//line ../../internal/templates/basepage.qtpl:113
+//line ../../internal/templates/basepage.qtpl:111
 			qw422016.N().S(`
 					<a href="#" class="list-group-item list-group-item-action bg-light">`)
-//line ../../internal/templates/basepage.qtpl:114
+//line ../../internal/templates/basepage.qtpl:112
 			qw422016.E().S(item)
-//line ../../internal/templates/basepage.qtpl:114
+//line ../../internal/templates/basepage.qtpl:112
 			qw422016.N().S(`</a>
 				`)
-//line ../../internal/templates/basepage.qtpl:115
+//line ../../internal/templates/basepage.qtpl:113
 		} else {
-//line ../../internal/templates/basepage.qtpl:115
+//line ../../internal/templates/basepage.qtpl:113
 			qw422016.N().S(`
 					<a href="`)
-//line ../../internal/templates/basepage.qtpl:116
+//line ../../internal/templates/basepage.qtpl:114
 			qw422016.E().S(subpage)
-//line ../../internal/templates/basepage.qtpl:116
+//line ../../internal/templates/basepage.qtpl:114
 			qw422016.E().S(item)
-//line ../../internal/templates/basepage.qtpl:116
+//line ../../internal/templates/basepage.qtpl:114
 			qw422016.N().S(`/index.html" class="list-group-item list-group-item-action bg-light">`)
-//line ../../internal/templates/basepage.qtpl:116
+//line ../../internal/templates/basepage.qtpl:114
 			qw422016.E().S(item)
-//line ../../internal/templates/basepage.qtpl:116
+//line ../../internal/templates/basepage.qtpl:114
 			qw422016.N().S(`</a>
 				`)
-//line ../../internal/templates/basepage.qtpl:117
+//line ../../internal/templates/basepage.qtpl:115
 		}
-//line ../../internal/templates/basepage.qtpl:117
+//line ../../internal/templates/basepage.qtpl:115
 		qw422016.N().S(`
 			`)
-//line ../../internal/templates/basepage.qtpl:118
+//line ../../internal/templates/basepage.qtpl:116
 	}
-//line ../../internal/templates/basepage.qtpl:118
+//line ../../internal/templates/basepage.qtpl:116
 	qw422016.N().S(`
 		</div>
     </div>
     <!-- /#sidebar-wrapper -->
 `)
-//line ../../internal/templates/basepage.qtpl:122
+//line ../../internal/templates/basepage.qtpl:120
 }
 
-//line ../../internal/templates/basepage.qtpl:122
+//line ../../internal/templates/basepage.qtpl:120
 func WriteSidebar(qq422016 qtio422016.Writer, items []string, current int, subpage string) {
-//line ../../internal/templates/basepage.qtpl:122
+//line ../../internal/templates/basepage.qtpl:120
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line ../../internal/templates/basepage.qtpl:122
+//line ../../internal/templates/basepage.qtpl:120
 	StreamSidebar(qw422016, items, current, subpage)
-//line ../../internal/templates/basepage.qtpl:122
+//line ../../internal/templates/basepage.qtpl:120
 	qt422016.ReleaseWriter(qw422016)
-//line ../../internal/templates/basepage.qtpl:122
+//line ../../internal/templates/basepage.qtpl:120
 }
 
-//line ../../internal/templates/basepage.qtpl:122
+//line ../../internal/templates/basepage.qtpl:120
 func Sidebar(items []string, current int, subpage string) string {
-//line ../../internal/templates/basepage.qtpl:122
+//line ../../internal/templates/basepage.qtpl:120
 	qb422016 := qt422016.AcquireByteBuffer()
-//line ../../internal/templates/basepage.qtpl:122
+//line ../../internal/templates/basepage.qtpl:120
 	WriteSidebar(qb422016, items, current, subpage)
-//line ../../internal/templates/basepage.qtpl:122
+//line ../../internal/templates/basepage.qtpl:120
 	qs422016 := string(qb422016.B)
-//line ../../internal/templates/basepage.qtpl:122
+//line ../../internal/templates/basepage.qtpl:120
 	qt422016.ReleaseByteBuffer(qb422016)
-//line ../../internal/templates/basepage.qtpl:122
+//line ../../internal/templates/basepage.qtpl:120
 	return qs422016
-//line ../../internal/templates/basepage.qtpl:122
+//line ../../internal/templates/basepage.qtpl:120
 }

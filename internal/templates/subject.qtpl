@@ -26,6 +26,19 @@ type SubjectPage struct {
 		const items = {%s= p.Files %}
 	</script>
 	<h1>{%s p.Subject %}</h1>
+
+	<div class="dropdown">
+		<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuDescription" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			Filter by...
+		</a>
+
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuDescription" id="dropdownMenuItems">
+			<!--<a class="dropdown-item" href="#">Something else here</a>-->
+		</div>
+	</div>
+
+	<br>
+
 	<noscript>Enable JavaScript for this page to work</noscript>
 	<div id="buildArea"></div>
 {% endfunc %}

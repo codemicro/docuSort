@@ -156,34 +156,47 @@ func (p *SubjectPage) StreamBody(qw422016 *qt422016.Writer) {
 	qw422016.E().S(p.Subject)
 //line ../../internal/templates/subject.qtpl:28
 	qw422016.N().S(`</h1>
+
+	<div class="dropdown">
+		<a class="btn btn-sm btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuDescription" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			Filter by...
+		</a>
+
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuDescription" id="dropdownMenuItems">
+			<!--<a class="dropdown-item" href="#">Something else here</a>-->
+		</div>
+	</div>
+
+	<br>
+
 	<noscript>Enable JavaScript for this page to work</noscript>
 	<div id="buildArea"></div>
 `)
-//line ../../internal/templates/subject.qtpl:31
+//line ../../internal/templates/subject.qtpl:44
 }
 
-//line ../../internal/templates/subject.qtpl:31
+//line ../../internal/templates/subject.qtpl:44
 func (p *SubjectPage) WriteBody(qq422016 qtio422016.Writer) {
-//line ../../internal/templates/subject.qtpl:31
+//line ../../internal/templates/subject.qtpl:44
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line ../../internal/templates/subject.qtpl:31
+//line ../../internal/templates/subject.qtpl:44
 	p.StreamBody(qw422016)
-//line ../../internal/templates/subject.qtpl:31
+//line ../../internal/templates/subject.qtpl:44
 	qt422016.ReleaseWriter(qw422016)
-//line ../../internal/templates/subject.qtpl:31
+//line ../../internal/templates/subject.qtpl:44
 }
 
-//line ../../internal/templates/subject.qtpl:31
+//line ../../internal/templates/subject.qtpl:44
 func (p *SubjectPage) Body() string {
-//line ../../internal/templates/subject.qtpl:31
+//line ../../internal/templates/subject.qtpl:44
 	qb422016 := qt422016.AcquireByteBuffer()
-//line ../../internal/templates/subject.qtpl:31
+//line ../../internal/templates/subject.qtpl:44
 	p.WriteBody(qb422016)
-//line ../../internal/templates/subject.qtpl:31
+//line ../../internal/templates/subject.qtpl:44
 	qs422016 := string(qb422016.B)
-//line ../../internal/templates/subject.qtpl:31
+//line ../../internal/templates/subject.qtpl:44
 	qt422016.ReleaseByteBuffer(qb422016)
-//line ../../internal/templates/subject.qtpl:31
+//line ../../internal/templates/subject.qtpl:44
 	return qs422016
-//line ../../internal/templates/subject.qtpl:31
+//line ../../internal/templates/subject.qtpl:44
 }
