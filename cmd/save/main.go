@@ -19,7 +19,7 @@ var (
 )
 
 const (
-	version = "1.0.1"
+	version = "1.0.2"
 )
 
 func main() {
@@ -132,7 +132,10 @@ func main() {
 		topicsForFilename = append(topicsForFilename, strings.ReplaceAll(strings.ToLower(v), " ", ""))
 	}
 
-	newFileLocation := filepath.Join(selectedSubject, fmt.Sprintf("%04d %s %s.", newFileNumber, dateString, strings.Join(topicsForFilename, " "))+fileExt)
+	newFilename := strings.ReplaceAll(fmt.Sprintf("%04d %s %s.", newFileNumber, dateString, strings.Join(topicsForFilename, " "))+fileExt, "/", "")
+	newFilename = strings.ReplaceAll(newFilename, "\\", "")
+
+	newFileLocation := filepath.Join(selectedSubject, newFilename)
 
 	thisFile := storage.Document{
 		Subject:  selectedSubject,
