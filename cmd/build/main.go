@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	version = "1.0.2"
+	version = "1.0.3"
 )
 
 //go:generate go get -u github.com/valyala/quicktemplate/qtc

@@ -14,12 +14,12 @@ import (
 )
 
 var (
-	subjects = [...]string{"Computer Science", "Maths", "Physics"}
+	subjects = [...]string{"Computer Science", "Maths", "Physics", "Stats and Mechanics"}
 	scanner  = bufio.NewScanner(os.Stdin)
 )
 
 const (
-	version = "1.0.2"
+	version = "1.0.3"
 )
 
 func main() {
