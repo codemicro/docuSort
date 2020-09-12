@@ -1,7 +1,5 @@
 # docuSort
 
-**This is an archive of v1, before docuSort was a full blown webapp.**
-
 A document categorisation and sorting tool.
 
 Contains code licenced under the MIT licence, specifically [https://startbootstrap.com/templates/simple-sidebar/](https://startbootstrap.com/templates/simple-sidebar/) and [Bootstrap](https://getbootstrap.com).
