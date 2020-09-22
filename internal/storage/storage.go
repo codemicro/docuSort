@@ -42,7 +42,7 @@ func GetFiles() ([]Document, error) {
 }
 
 func SaveFiles(in []Document) error {
-	j, err := json.Marshal(in)
+	j, err := json.MarshalIndent(in, "", "  ")
 	if err != nil {
 		return err
 	}
