@@ -11,6 +11,7 @@ import (
 
 	"github.com/codemicro/docuSort/internal/helpers"
 	"github.com/codemicro/docuSort/internal/storage"
+	"github.com/manifoldco/promptui"
 )
 
 var (
@@ -19,8 +20,17 @@ var (
 )
 
 const (
-	version = "1.0.4"
+	version = "1.1.0"
 )
+
+func GetOption(label string, options []string) (string, error) {
+	prompt := promptui.Select{
+		Label: label,
+		Items: options,
+	}
+	_, selected, err := prompt.Run()
+	return selected, err
+}
 
 func main() {
 	fmt.Println("docuSort save tool v" + version)
@@ -112,6 +122,18 @@ func main() {
 
 	}
 
+	// Get teacher
+	fmt.Print("Teacher: ")
+	scanner.Scan()
+	teacher := scanner.Text()
+
+	// Get type
+	documentType, err := GetOption("Type", []string{"Classwork", "Homework", "Assessment"})
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
 	existingFiles, err := storage.GetFiles()
 	if err != nil {
 		fmt.Println(err.Error())
@@ -141,6 +163,8 @@ func main() {
 		Subject:  selectedSubject,
 		Filename: newFileLocation,
 		Topics:   topics,
+		Teacher:  teacher,
+		Type:     documentType,
 	}
 
 	existingFiles = append(existingFiles, thisFile)

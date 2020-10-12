@@ -22,7 +22,7 @@ function createListOfItems(filter="") {
         a.addEventListener("mouseup", showModal);
     
         a.setAttribute("href", "#")
-        a.appendChild(document.createTextNode(date + " - " + currentItem["Topics"].join(", ")))
+        a.appendChild(document.createTextNode(date + " - " + currentItem["Teacher"] + ", " + currentItem["Type"] + " - " + currentItem["Topics"].join(", ")))
     
         var li = document.createElement("li")
         li.appendChild(a)

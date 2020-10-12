@@ -23,6 +23,8 @@ type Document struct {
 	Subject  string
 	Filename string
 	Topics   []string
+	Teacher string
+	Type string
 }
 
 func GetFiles() ([]Document, error) {
