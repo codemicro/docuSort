@@ -23,7 +23,7 @@ type SubjectPage struct {
 
 {% func (p *SubjectPage) Body() %}
 	<script>
-		const items = {%s= p.Files %}
+		let items = {%s= p.Files %}
 	</script>
 	<h1>{%s p.Subject %}</h1>
 

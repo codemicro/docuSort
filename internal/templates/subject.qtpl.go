@@ -145,7 +145,7 @@ func (p *SubjectPage) StreamBody(qw422016 *qt422016.Writer) {
 //line ../../internal/templates/subject.qtpl:24
 	qw422016.N().S(`
 	<script>
-		const items = `)
+		let items = `)
 //line ../../internal/templates/subject.qtpl:26
 	qw422016.N().S(p.Files)
 //line ../../internal/templates/subject.qtpl:26
