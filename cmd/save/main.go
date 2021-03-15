@@ -20,7 +20,7 @@ var (
 )
 
 const (
-	version = "1.1.0"
+	version = "1.2.0"
 )
 
 func GetOption(label string, options []string) (string, error) {
@@ -88,12 +88,12 @@ func main() {
 	// Get date
 	var dateString string
 
-	fmt.Print("Date (blank for today, else ddmmyy): ")
+	fmt.Print("Date (blank for today, else yyyy-mm-dd): ")
 	scanner.Scan()
 	text := scanner.Text()
 
 	if text == "" {
-		dateString = time.Now().Format("020106") // ddmmyy format
+		dateString = time.Now().Format("2006-01-02") // yyyy-mm-dd
 	} else {
 		dateString = text
 	}
@@ -140,21 +140,15 @@ func main() {
 		return
 	}
 
-	subjectFileCount := storage.CountWhereSubjectIs(selectedSubject, existingFiles)
-
-	fmt.Println(subjectFileCount)
-
 	documentComponents := strings.Split(document, ".")
 	fileExt := documentComponents[len(documentComponents)-1]
-
-	newFileNumber := subjectFileCount + 1
 
 	var topicsForFilename []string
 	for _, v := range topics {
 		topicsForFilename = append(topicsForFilename, strings.ReplaceAll(strings.ToLower(v), " ", ""))
 	}
 
-	newFilename := strings.ReplaceAll(fmt.Sprintf("%04d %s %s.", newFileNumber, dateString, strings.Join(topicsForFilename, " "))+fileExt, "/", "")
+	newFilename := strings.ReplaceAll(fmt.Sprintf("%s %s.", dateString, strings.Join(topicsForFilename, " "))+fileExt, "/", "")
 	newFilename = strings.ReplaceAll(newFilename, "\\", "")
 
 	newFileLocation := filepath.Join(selectedSubject, newFilename)
